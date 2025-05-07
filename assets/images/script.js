@@ -4,7 +4,7 @@ const handleFormSubmit = (e) => {
   let firstName = document.querySelector('#firstName').value
   let lastName = document.querySelector('#lastName').value
   let email = document.querySelector('#email').value
-  let age = document.querySelector('#age').value
+  let message = document.querySelector('#message').value
   let resultView = document.querySelector('#result-view')
 
   e.preventDefault()
@@ -12,7 +12,7 @@ const handleFormSubmit = (e) => {
     firstName: firstName,
     lastName: lastName,
     email: email,
-    age: age,
+    message: Message,
   }
 
   const userDataAsJson = JSON.stringify(userData)
@@ -23,6 +23,6 @@ const handleFormSubmit = (e) => {
   )
   console.log(userDataAsJson)
 
-  resultView.innerHTML = `<li>First Name: ${userData.firstName}</li><li>Last Name: ${userData.lastName}</li><li>Email: ${userData.email}</li><li>Age: ${userData.age}</li>`
+  resultView.innerHTML = `<li>First Name: ${userData.firstName}</li><li>Last Name: ${userData.lastName}</li><li>Email: ${userData.email}</li><li>Message: ${userData.message}</li>`
 }
 form.addEventListener('submit', handleFormSubmit)
