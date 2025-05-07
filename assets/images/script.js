@@ -1,20 +1,28 @@
-document.getElementById('contactForm').addEventListener('submit', function (e) {
+let form = document.querySelector('form')
+
+const handleFormSubmit = (e) => {
+  let firstName = document.querySelector('#firstName').value
+  let lastName = document.querySelector('#lastName').value
+  let email = document.querySelector('#email').value
+  let age = document.querySelector('#age').value
+  let resultView = document.querySelector('#result-view')
+
   e.preventDefault()
+  const userData = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    age: age,
+  }
 
-  const firstName = document.getElementById('firstName').value
-  const lastName = document.getElementById('lastName').value
-  const email = document.getElementById('email').value
-  const message = document.getElementById('message').value
+  const userDataAsJson = JSON.stringify(userData)
 
-  const output = `
-      <h3>Form Submission:</h3>
-      <p><strong>First Name:</strong> ${firstName}</p>
-      <p><strong>Last Name:</strong> ${lastName}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Message:</strong> ${message}</p>
-    `
+  console.log(userData)
+  console.log(
+    '================================================================='
+  )
+  console.log(userDataAsJson)
 
-  document.getElementById('formOutput').innerHTML = output
-
-  this.reset()
-})
+  resultView.innerHTML = `<li>First Name: ${userData.firstName}</li><li>Last Name: ${userData.lastName}</li><li>Email: ${userData.email}</li><li>Age: ${userData.age}</li>`
+}
+form.addEventListener('submit', handleFormSubmit)
