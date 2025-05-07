@@ -1,4 +1,4 @@
-let form = document.querySelector('form')
+let form = document.querySelector('#contactForm')
 
 const handleFormSubmit = (e) => {
   let firstName = document.querySelector('#firstName').value
