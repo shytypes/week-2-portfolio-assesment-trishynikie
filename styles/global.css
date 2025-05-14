@@ -70,10 +70,6 @@ li:hover {
   color: #f0f3f5;
   font-weight: bold;
 }
-/*title text style*/
-/* the font-family 'JetBrains Mono', has been linked
- * and is available for your use
- * */
 
 form input,
 form textarea {
@@ -95,6 +91,19 @@ button {
   background-color: #e0ffe0;
   padding: 1rem;
   border-radius: 5px;
+}
+
+#result-view {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.error- message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
 }
 
 /*title text style*/
