@@ -1,136 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // DOM Elements
-  const contactForm = document.getElementById('contactForm')
-  const resultContainer = document.getElementById('result-view')
-  const formInputs = {
-    firstName: document.getElementById('firstName'),
-    lastName: document.getElementById('lastName'),
-    email: document.getElementById('email'),
-    message: document.getElementById('message'),
-  }
+  console.log('Script is connected!') // Should appear in console
 
-  // Create result list element if it doesn't exist
-  if (!resultContainer) {
-    const newResultContainer = document.createElement('ul')
-    newResultContainer.id = 'result-view'
-    document.querySelector('main').appendChild(newResultContainer)
-  }
+  // 1. Get form elements
+  const form = document.getElementById('contactForm')
+  const inputs = form.querySelectorAll('input, textarea')
+  const button = form.querySelector('button')
 
-  // Form submission handler
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault()
+  // 2. Basic form styling
+  form.style.display = 'flex'
+  form.style.flexDirection = 'column'
+  form.style.gap = '15px'
+  form.style.maxWidth = '500px'
+  form.style.margin = '0 auto'
+  form.style.padding = '20px'
 
-    // Validate form
-    if (!validateForm()) {
-      return
-    }
-
-    // Create and display results
-    displayResults(getFormData())
-
-    // Reset form
-    resetForm()
-
-    // Optional: Send data to server
-    logFormData()
+  // 3. Style all inputs and textarea
+  inputs.forEach((input) => {
+    input.style.padding = '10px'
+    input.style.fontSize = '16px'
+    input.style.border = '1px solid #ccc'
+    input.style.borderRadius = '4px'
   })
 
-  // Helper functions
-  function getFormData() {
-    return {
-      firstName: formInputs.firstName.value.trim(),
-      lastName: formInputs.lastName.value.trim(),
-      email: formInputs.email.value.trim(),
-      message: formInputs.message.value.trim(),
-      submissionTime: new Date(),
-    }
-  }
+  // 4. Make textarea larger
+  const textarea = document.getElementById('message')
+  textarea.style.minHeight = '100px'
 
-  function validateForm() {
-    let isValid = true
-
-    // Clear previous error messages
-    document.querySelectorAll('.error-message').forEach((el) => el.remove())
-
-    // Validate each field
-    Object.entries(formInputs).forEach(([key, input]) => {
-      if (!input.value.trim()) {
-        isValid = false
-        const errorMsg = document.createElement('span')
-        errorMsg.className = 'error-message'
-        errorMsg.textContent = `Please enter your ${key}`
-        errorMsg.style.color = 'red'
-        errorMsg.style.display = 'block'
-        input.insertAdjacentElement('afterend', errorMsg)
-      }
-    })
-
-    // Additional email validation
-    if (
-      formInputs.email.value.trim() &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formInputs.email.value)
-    ) {
-      isValid = false
-      const emailError = document.createElement('span')
-      emailError.className = 'error-message'
-      emailError.textContent = 'Please enter a valid email address'
-      emailError.style.color = 'red'
-      emailError.style.display = 'block'
-      formInputs.email.insertAdjacentElement('afterend', emailError)
-    }
-
-    return isValid
-  }
-
-  function displayResults(data) {
-    // Create DOM elements
-    const resultList = document.createElement('ul')
-
-    // Add result items
-    const resultItems = [
-      { label: 'Name', value: `${data.firstName} ${data.lastName}` },
-      { label: 'Email', value: data.email },
-      { label: 'Message', value: data.message },
-      { label: 'Submitted', value: data.submissionTime.toLocaleString() },
-    ]
-
-    resultItems.forEach((item) => {
-      const listItem = document.createElement('li')
-      const strong = document.createElement('strong')
-      strong.textContent = `${item.label}: `
-      listItem.appendChild(strong)
-      listItem.appendChild(document.createTextNode(item.value))
-      resultList.appendChild(listItem)
-    })
-
-    // Clear previous results and add new ones
-    resultContainer.innerHTML = ''
-    resultContainer.appendChild(resultList)
-
-    // Add success message
-    const successMsg = document.createElement('p')
-    successMsg.textContent = 'Form submitted successfully!'
-    successMsg.style.color = 'green'
-    successMsg.style.fontWeight = 'bold'
-    resultContainer.insertAdjacentElement('beforebegin', successMsg)
-
-    // Scroll to results
-    resultContainer.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  function resetForm() {
-    contactForm.reset()
-    // Clear any remaining error messages
-    document.querySelectorAll('.error-message').forEach((el) => el.remove())
-  }
-
-  function logFormData() {
-    const formData = getFormData()
-    console.log('Form submitted:', {
-      name: `${formData.firstName} ${formData.lastName}`,
-      email: formData.email,
-      message: formData.message,
-      timestamp: formData.submissionTime,
-    })
-  }
+  // 5. Style the submit button
+  button.style.padding = '10px 15px'
+  button.style.background = '#4CAF50'
+  button.style.color = 'white'
+  button.style.border = 'none'
+  button.style.borderRadius = '4px'
+  button.style.cursor = 'pointer'
 })
