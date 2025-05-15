@@ -33,4 +33,51 @@ document.addEventListener('DOMContentLoaded', function () {
   button.style.border = 'none'
   button.style.borderRadius = '4px'
   button.style.cursor = 'pointer'
-})
+}
+// 6. Form submission handler
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+    
+    // 7. Get form values
+    const formData = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value,
+      timestamp: new Date().toLocaleString()
+    };
+
+    // 8. Simple validation
+    if (!formData.firstName || !formData.lastName || !formData.email) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    // 9. Display results
+    displayResults(formData);
+    
+    // 10. Reset form
+    form.reset();
+  });
+
+  // 11. Function to display results
+  function displayResults(data) {
+    // Create HTML for results
+    const resultHTML = `
+      <li><strong>Name:</strong> ${data.firstName} ${data.lastName}</li>
+      <li><strong>Email:</strong> ${data.email}</li>
+      <li><strong>Message:</strong> ${data.message || 'No message provided'}</li>
+      <li><strong>Submitted:</strong> ${data.timestamp}</li>
+    `;
+    
+    // Insert results into DOM
+    resultView.innerHTML = resultHTML;
+    
+    // Scroll to results
+    resultView.scrollIntoView({ behavior: 'smooth' });
+    
+    // Console log for debugging
+    console.log('Form submitted:', data);
+  }
+
+)
