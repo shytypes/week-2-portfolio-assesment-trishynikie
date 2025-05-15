@@ -105,6 +105,33 @@ button {
   font-size: 0.8rem;
   margin-top: 0.25rem;
 }
+/* Add these to enhance the new functionality */
+#contactForm {
+  background: #3a3a3a;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+#contactForm label {
+  display: block;
+  margin-top: 1rem;
+  color: #f3b7bf;
+}
+
+#contactForm button:hover {
+  background: #d4639c;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.error-message {
+  /* Fix typo from your original (remove space) */
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
 
 /*title text style*/
 /* the font-family 'JetBrains Mono', has been linked
