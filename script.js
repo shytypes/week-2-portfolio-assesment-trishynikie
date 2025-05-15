@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contactForm')
   const inputs = form.querySelectorAll('input, textarea')
   const button = form.querySelector('button')
-
+  const resultView = document.getElementById('resultView')
   // 2. Basic form styling
   form.style.display = 'flex'
   form.style.flexDirection = 'column'
